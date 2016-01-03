@@ -1,8 +1,8 @@
 # node-red-contrib-nunchuck
- A Node RED node to read data from nunchuck device mounted on I2C bus
- 
- From the node-red user data directory launch:
-  npm install node-red-contrib-nunchuck
+A Node RED node to read data from nunchuck device mounted on I2C bus
+From the node-red user data directory launch:
+
+       npm install node-red-contrib-nunchuck
  
  After node-red restart it will be available a new node called "nunchuck" in output directory.
  The node has two config properties:
