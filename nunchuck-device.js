@@ -2,8 +2,11 @@ var i2c = require('i2c-bus');
 var NUNCHUCK_DEVICE = 0x52;
 var center = 128;
 var def_threshholdX = 142-center;
+var def_threshholdX = 133-center;
 var currentX = center;
+var currentY = center;
 var lastXEvent = "";
+var lastYEvent = "";
 
 function NunchuckDevice(address, frequency, thresholds){
   this.address = address;
@@ -40,15 +43,33 @@ NunchuckDevice.prototype.start = function(ondata){
       value = buffer.readUInt8(i);
       switch(i){
         case 0:
-        values[0] = device.decodeX(value);
-        break;
+          values[0] = device.decodeX(value);
+          break;
         case 1:
-        break;
+          values[1] = device.decodeY(value);
+          break;
         default:
         break;
       }
     }
     return values;
+  }
+
+  this.decodeY = function(newY){
+    var diffY = newY - (center+(device.threshholdY||def_threshholdY));
+    var yEvent;
+    if(diffX==0 || diffX ==-1){
+      xEvent = 'center';
+    }
+    else if(diffX>=0){
+      //RIGHT
+      xEvent = 'up'
+    }
+    else if(diffX<-1){
+      //LEFT
+      xEvent = 'down'
+    }
+    return yEvent;
   }
 
   this.decodeX = function(newX){
@@ -72,7 +93,7 @@ NunchuckDevice.prototype.start = function(ondata){
 
 NunchuckDevice.prototype.stop = function(){
   clearInterval(this.started);
-   this.bus.closeSync();
+  this.bus.closeSync();
 }
 
 module.exports = NunchuckDevice;

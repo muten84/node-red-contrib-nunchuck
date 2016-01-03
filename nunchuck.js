@@ -6,8 +6,11 @@ module.exports = function(RED) {
   var NUNCHUCK_ADDRESS = 0x52;
   var center = 128;
   var threshholdX = 142-center;
+  var threshholdY = 133-center;
   var currentX = center;
+  var currentY = center;
   var lastXEvent = "";
+  var lastYEvent = "";
   var connected = {fill:"green",shape:"dot",text:"connected"};
   var disconnected = {fill:"red",shape:"ring",text:"disconnected"};
 
@@ -24,7 +27,8 @@ module.exports = function(RED) {
         node.status(connected);
       }
       var struct = {
-        x: stream[0]
+        x: stream[0],
+        y: stream[1],
       }
       var msg = { payload: struct };
       node.send(msg);
