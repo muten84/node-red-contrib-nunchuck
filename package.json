@@ -1,0 +1,25 @@
+{
+  "name": "node-red-contrib-nunchuck",
+  "version": "0.0.1",
+  "description": "A Node-RED node to read data from nunchuck device.",
+  "dependencies": {
+    "i2c-bus": ">=1.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "nunchuck",
+    "iot"
+  ],
+  "node-red": {
+    "nodes": {
+      "nunchuck": "nunchuck.js"
+    }
+  },
+  "author": {
+    "name": "Luigi Bifulco",
+    "email": "bifulcoluigi@gmail.com",
+    "url": "http://www.luigibifulco.it"
+  },
+  "readme": "ERROR: No README data found!"
+}
