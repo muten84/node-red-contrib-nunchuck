@@ -114,16 +114,16 @@ NunchuckDevice.prototype.start = function(ondata){
   this.decodeY = function(newY){
     var diffY = newY - (center+(device.threshholdY||def_threshholdY));
     var yEvent;
-    if(diffX==0 || diffX ==-1){
-      xEvent = 'center';
+    if(diffY==0 || diffY==-1){
+      yEvent = 'center';
     }
-    else if(diffX>=0){
-      //RIGHT
-      xEvent = 'up'
+    else if(diffY>=0){
+      //UP
+      yEvent = 'up'
     }
-    else if(diffX<-1){
-      //LEFT
-      xEvent = 'down'
+    else if(diffY<-1){
+      //DOWN
+      yEvent = 'down'
     }
     return yEvent;
   }
