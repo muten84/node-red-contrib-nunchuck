@@ -10,8 +10,6 @@ var NunchuckDevice = require('./nunchuck-device');
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX]);
 nunchuck.init();
     nunchuck.start(function(stream){
-          var struct = {
-        x: stream[0]
-      }
-     console.log(struct);
+        
+     console.log(stream);
     });
