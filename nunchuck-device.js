@@ -35,7 +35,7 @@ NunchuckDevice.prototype.start = function(ondata){
   },device.frequency||1);
 
   this.n = function(b){
-    b = (b ^ 0x17) + 0x17;
+    //b = (b ^ 0x17) + 0x17;
     return b;
   }
   this.parseData = function(buffer){
