@@ -36,7 +36,6 @@ NunchuckDevice.prototype.start = function(ondata){
 
   this.parseData = function(buffer){
     var parsed = new Buffer(7);
-    console.log(buffer);
     parsed[0] = buffer[0]; //x
     parsed[1] = buffer[1]; //y
     parsed[2] = (~buffer[5]) & 0xb1; //Z button
@@ -67,6 +66,7 @@ NunchuckDevice.prototype.start = function(ondata){
           values[i] = device.decodeX(value);
           continue;
         case 1:
+          console.log(value);
           values[i] = device.decodeY(value);
           continue;
         case 2:
