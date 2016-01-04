@@ -2,7 +2,7 @@ var i2c = require('i2c-bus');
 var NUNCHUCK_DEVICE = 0x52;
 var center = 128;
 var def_threshholdX = 142-center;
-var def_threshholdX = 133-center;
+var def_threshholdY = 133-center;
 var currentX = center;
 var currentY = center;
 var lastXEvent = "";
@@ -11,6 +11,7 @@ var lastYEvent = "";
 function NunchuckDevice(address, frequency, thresholds){
   this.address = address;
   this.threshholdX = thresholds[0];
+  this.threshholdY = thresholds[1];
   this.frequency = frequency;
   this.started = null;
   this.bus = "Bus not initialized";
