@@ -70,7 +70,6 @@ NunchuckDevice.prototype.start = function(ondata){
           values[i] = device.decodeY(value);
           continue;
         case 2:
-         console.log(value);
           values[i] = device.decodeC(value);
           continue;
         case 3:
@@ -93,11 +92,11 @@ NunchuckDevice.prototype.start = function(ondata){
   }
 
   this.decodeC = function(newC){
-    return "idle";
+    return newC;
   }
 
   this.decodeZ = function(newZ){
-    return "idle";
+    return newZ;
   }
 
   this.decodeAx= function(newAx){
