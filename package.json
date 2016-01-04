@@ -5,6 +5,7 @@
   "dependencies": {
     "i2c-bus": ">=1.0.0"
   },
+  "main": "main.js",
   "license": "MIT",
   "keywords": [
     "node-red",
