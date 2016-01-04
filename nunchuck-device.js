@@ -66,10 +66,10 @@ NunchuckDevice.prototype.start = function(ondata){
           values[i] = device.decodeX(value);
           continue;
         case 1:
-          console.log(value);
           values[i] = device.decodeY(value);
           continue;
         case 2:
+         console.log(value);
           values[i] = device.decodeC(value);
           continue;
         case 3:
