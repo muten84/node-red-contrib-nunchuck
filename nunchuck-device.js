@@ -49,9 +49,9 @@ NunchuckDevice.prototype.start = function(ondata){
     else { parsed[3] = 0; }
     if ((device.n(buffer[5]) & 0x02)!=0){ parsed[2] = 1; }
     else { parsed[2] = 0; }
-    parsed[4] = ((buffer[5] >>2) & 0x03) | (buffer[2]<<2);
-    parsed[5] = ((buffer[5] >>4) & 0x03) | (buffer[3]<<2);
-    parsed[6] = ((buffer[5] >>6) & 0x03) | (buffer[4]<<2);
+    parsed[4] = ((buffer[5] >>2) & 0x03) | parseInt((buffer[2]<<2));
+    parsed[5] = ((buffer[5] >>4) & 0x03) | parseInt((buffer[3]<<2));
+    parsed[6] = ((buffer[5] >>6) & 0x03) | parseInt((buffer[4]<<2));
 
     //parsed[4] += ((device.n(buffer[5])) >> 2) & 0x03;
     //parsed[5] += ((device.n(buffer[5])) >> 4) & 0x03;
