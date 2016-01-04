@@ -38,20 +38,21 @@ NunchuckDevice.prototype.start = function(ondata){
     var parsed = new Buffer(7);
     parsed[0] = buffer[0]; //x
     parsed[1] = buffer[1]; //y
-    parsed[2] = (~buffer[5]) & 0xb1; //Z button
-    parsed[3] = ((~buffer[5])>>1) & 0xb1; // C button
-    parsed[4] = (((~buffer[5])>>2) & 0xb1) | (buffer[2]<<2) //aX;
-    parsed[5] = (((~buffer[5])>>4) & 0xb1) | (buffer[3]<<2) //aY;
-    parsed[6] = (((~buffer[5])>>6) & 0xb1) | (buffer[4]<<2) //aZ;
+    parsed[4] = (buffer[2]) << 2; //aX;
+    parsed[5] = (buffer[3]) << 2; //aY;
+    parsed[6] = (buffer[4]) << 2; //aZ;
+    if ((buffer[5] & 0x01)!=0) {parsed[2] = 1; }
+    else { parsed[2] = 0; }
+    if ((buffer[5] & 0x02)!=0){ parsed[3] = 1; }
+    else { parsed[3] = 0; }
+    parsed[4] += ((buffer[5]) >> 2) & 0x03;
+    parsed[5] += ((buffer[5]) >> 4) & 0x03;
+    parsed[6] += ((buffer[5]) >> 6) & 0x03;
     return parsed;
-	  /*n->X = nunchuk_data_buffer[0];
-	  n->Y = nunchuk_data_buffer[1];
-	  n->Z = (~nunchuk_data_buffer[5]) & 0b1;
-	  n->C = ((~nunchuk_data_buffer[5])>>1) & 0b1;
-	  n->aX = (((nunchuk_data_buffer[5]>>2) & 0b11) | ((int)nunchuk_data_buffer[2])<<2);
-	  n->aY = (((nunchuk_data_buffer[5]>>4) & 0b11) | ((int)nunchuk_data_buffer[3])<<2);
-	  n->aZ = (((nunchuk_data_buffer[5]>>6) & 0b11) | ((int)nunchuk_data_buffer[4])<<2);*/
   }
+
+
+
 
   this.decode = function(buffer){
     var value = -1;
