@@ -64,27 +64,27 @@ NunchuckDevice.prototype.start = function(ondata){
       switch(i){
         case 0:
           values[i] = device.decodeX(value);
-          break;
+          continue;
         case 1:
           values[i] = device.decodeY(value);
-          break;
+          continue;
         case 2:
           values[i] = device.decodeC(value);
-          break;
+          continue;
         case 3:
           values[i] = device.decodeZ(value);
-          break;
+          continue;
         case 4:
           values[i] = device.decodeAx(value);
-          break;
+          continue;
         case 5:
           values[i] = device.decodeAy(value);
-          break;
+          continue;
         case 6:
           values[i] = device.decodeAz(value);
-          break;
+          continue;
         default:
-          break;
+          continue;
       }
     }
     return values;
