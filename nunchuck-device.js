@@ -34,20 +34,24 @@ NunchuckDevice.prototype.start = function(ondata){
     ondata(decoded);
   },device.frequency||1);
 
+  this.normalize = function(b){
+    b = (b ^ 0x17) + 0x17;
+    return b;
+  }
   this.parseData = function(buffer){
     var parsed = new Buffer(7);
-    parsed[0] = buffer[0]; //x
-    parsed[1] = buffer[1]; //y
-    parsed[4] = (buffer[2]) << 2; //aX;
-    parsed[5] = (buffer[3]) << 2; //aY;
-    parsed[6] = (buffer[4]) << 2; //aZ;
-    if ((buffer[5] & 0x01)!=0) {parsed[3] = 1; }
+    parsed[0] = normalize(buffer[0]); //x
+    parsed[1] = normalize(buffer[1]); //y
+    parsed[4] = (normalize(buffer[2])) << 2; //aX;
+    parsed[5] = (normalize(buffer[3])) << 2; //aY;
+    parsed[6] = (normalize(buffer[4])) << 2; //aZ;
+    if ((normalize(buffer[5]) & 0x01)!=0) {parsed[3] = 1; }
     else { parsed[3] = 0; }
-    if ((buffer[5] & 0x02)!=0){ parsed[2] = 1; }
+    if ((normalize(buffer[5]) & 0x02)!=0){ parsed[2] = 1; }
     else { parsed[2] = 0; }
-    parsed[4] += ((buffer[5]) >> 2) & 0x03;
-    parsed[5] += ((buffer[5]) >> 4) & 0x03;
-    parsed[6] += ((buffer[5]) >> 6) & 0x03;
+    parsed[4] += ((normalize(buffer[5])) >> 2) & 0x03;
+    parsed[5] += ((normalize(buffer[5])) >> 4) & 0x03;
+    parsed[6] += ((normalize(buffer[5])) >> 6) & 0x03;
     return parsed;
   }
 
