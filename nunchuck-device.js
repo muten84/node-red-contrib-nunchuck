@@ -37,11 +37,11 @@ NunchuckDevice.prototype.start = function(ondata){
     var parsed = new Buffer(7);
     parsed[0] = buffer[0]; //x
     parsed[1] = buffer[1]; //y
-    parsed[2] = (~buffer[5]) & 0b1; //Z button
-    parsed[3] = ((~buffer[5])>>1) & 0b1; // C button
-    parsed[4] = (((~buffer[5])>>2) & 0b1) | (buffer[2]<<2) //aX;
-    parsed[5] = (((~buffer[5])>>4) & 0b1) | (buffer[3]<<2) //aY;
-    parsed[6] = (((~buffer[5])>>6) & 0b1) | (buffer[4]<<2) //aZ;
+    parsed[2] = (~buffer[5]) & 0xb1; //Z button
+    parsed[3] = ((~buffer[5])>>1) & 0xb1; // C button
+    parsed[4] = (((~buffer[5])>>2) & 0xb1) | (buffer[2]<<2) //aX;
+    parsed[5] = (((~buffer[5])>>4) & 0xb1) | (buffer[3]<<2) //aY;
+    parsed[6] = (((~buffer[5])>>6) & 0xb1) | (buffer[4]<<2) //aZ;
     return parsed;
 	  /*n->X = nunchuk_data_buffer[0];
 	  n->Y = nunchuk_data_buffer[1];
