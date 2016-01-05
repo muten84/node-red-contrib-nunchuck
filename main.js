@@ -38,6 +38,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  axStream.put(stream[4]toString(16),'hex');
+  axStream.put(stream[4].toString(16),'hex');
   console.log(stream);
 });
