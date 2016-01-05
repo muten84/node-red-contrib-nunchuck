@@ -1,7 +1,9 @@
 module.exports = function(RED) {
   "use strict";
   /*import dependencies*/
-  var NunchuckDevice = require('./nunchuck-device');
+  var nunchuckModules = require('nunchuck-js').nunchuck;
+  var NunchuckDevice = nunchuckModules.device;
+  var NunchuckDecoder = nunchuckModules.decoder;
 
   var NUNCHUCK_ADDRESS = 0x52;
   var center = 128;
@@ -20,7 +22,8 @@ module.exports = function(RED) {
     /*read node configs */
     this.frequency = config.frequency ;
     var node = this;
-    var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, (this.frequency|| 1),[threshholdX]);
+    var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 10,[threshholdX,threshholdY]);
+
 
     //register close handler
     this.on('close', function() {
@@ -28,7 +31,8 @@ module.exports = function(RED) {
       nunchuck.stop();
     });
     nunchuck.init();
-    nunchuck.start(function(stream){
+    var decoder = new NunchuckDecoder(nunchuck);
+    decoder.start(function(stream){
       if(stream.length>0){
         node.status(connected);
       }
@@ -36,10 +40,7 @@ module.exports = function(RED) {
         x: stream[0],
         y: stream[1],
         C: stream[2],
-        Z: stream[3],
-        aX: stream[4],
-        aY: stream[5],
-        aZ: stream[6]
+        Z: stream[3]     
       }
       var msg = { payload: struct };
       node.send(msg);
