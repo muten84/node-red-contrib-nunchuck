@@ -11,16 +11,21 @@ var lastXEvent = "";
 
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX,threshholdY]);
 nunchuck.init();
-var readStream = new streamBuffers.ReadableStreamBuffer({
+var axStream = new streamBuffers.ReadableStreamBuffer({
 	frequency: 1,   // in milliseconds.
-	chunkSize: 1  // in bytes.
+	chunkSize: 10  // in bytes.
 });
-readStream.on('readable', function(data) {
-  var chunk;
-  while((chunk = readStream.read()) !== null) {
-    console.log(chunk);
-  }
+axStream.on('data', function(data) {
+  // streams1.x style data
+  //assert.isTrue(data instanceof Buffer);
+  console.log(data);
 });
+// readStream.on('readable', function(data) {
+//   var chunk;
+//   while((chunk = readStream.read()) !== null) {
+//     console.log(chunk);
+//   }
+// });
 nunchuck.start(function(stream){
   var struct = {
     x: stream[0],
@@ -31,6 +36,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  readStream.put(stream);
+  axStream.put(stream[4]);
   //console.log(stream);
 });
