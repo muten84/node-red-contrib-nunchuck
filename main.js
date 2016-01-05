@@ -1,4 +1,5 @@
 var streamBuffers = require('stream-buffers');
+var Readable = require('stream').Readable;
 var NunchuckDevice = require('./nunchuck-device');
 
 var NUNCHUCK_ADDRESS = 0x52;
@@ -12,20 +13,13 @@ var lastXEvent = "";
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX,threshholdY]);
 nunchuck.init();
 var axStream = new streamBuffers.ReadableStreamBuffer({
-	frequency: 10,   // in milliseconds.
+	frequency: 1,   // in milliseconds.
 	chunkSize: 1  // in bytes.
 });
-// axStream.on('data', function(data) {
-//   console.log(data);
-//   var i = -1;
-//   for(i=0; i<data.length; i++){
-//     console.log(data.readUInt8(i));
-//   }
-// });
 axStream.on('readable', function(data) {
   var chunk;
   while((chunk = axStream.read()) !== null) {
-    console.log(parseInt(chunk,16));
+    console.log(chunk);
   }
 });
 nunchuck.start(function(stream){
@@ -38,6 +32,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  axStream.put(stream[4].toString(16),'hex');
+  axStream.put(stream[4]);
   console.log(stream);
 });
