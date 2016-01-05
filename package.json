@@ -4,7 +4,8 @@
   "description": "A Node-RED node to read data from nunchuck device.",
   "dependencies": {
     "i2c-bus": ">=1.0.0",
-    "stream-buffers": ">=3.0.0"
+    "stream-buffers": ">=3.0.0",
+    "binary": "0.3.0"
   },
   "main": "main.js",
   "license": "MIT",
