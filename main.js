@@ -24,7 +24,7 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 // });
 axStream.on('readable', function(data) {
   var chunk;
-  while((chunk = readStream.read()) !== null) {
+  while((chunk = axStream.read()) !== null) {
     console.log(chunk);
   }
 });
