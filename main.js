@@ -15,19 +15,19 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 	frequency: 1,   // in milliseconds.
 	chunkSize: 1  // in bytes.
 });
-axStream.on('data', function(data) {
-  console.log(data);
-  var i = -1;
-  for(i=0; i<data.length; i++){
-    console.log(data.readUInt8(i));
-  }
-});
-// readStream.on('readable', function(data) {
-//   var chunk;
-//   while((chunk = readStream.read()) !== null) {
-//     console.log(chunk);
+// axStream.on('data', function(data) {
+//   console.log(data);
+//   var i = -1;
+//   for(i=0; i<data.length; i++){
+//     console.log(data.readUInt8(i));
 //   }
 // });
+axStream.on('readable', function(data) {
+  var chunk;
+  while((chunk = readStream.read()) !== null) {
+    console.log(chunk);
+  }
+});
 nunchuck.start(function(stream){
   var struct = {
     x: stream[0],
@@ -38,6 +38,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  //axStream.put(stream[4],'binary');
+  axStream.put(stream[4],'binary');
   console.log(stream);
 });
