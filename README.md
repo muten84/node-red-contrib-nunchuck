@@ -24,10 +24,10 @@ From the node-red user data directory launch:
  - Z is the Z button of the controller its possible values are "idle,pressed";
  - WORK IN PROGRESS: aX,aY and aZ are the x, y and z axis of the accelerometer, their possible values are development;
 
-#UPDATE:
-This node-red project now depends on [nunchuck.js](https://github.com/muten84/nunchuck.js) node.js module. 
+###UPDATE:
+This node-red project now depends on [nunchuck.js](https://github.com/muten84/nunchuck.js) node.js module, it provides a decoder object and a nunchuck device object.
 
-#WIP:
+###WIP:
 The resulting JSON object will be extended with more other nice info derived by the accelerometer such as:
  - motion verse detection: left, right, up, down 
  - tilt: tilt-left, tilt-right, tilt-up, tilt-down
