@@ -38,6 +38,7 @@ NunchuckDevice.prototype.start = function(ondata){
     //b = (b ^ 0x17) + 0x17;
     return b;
   }
+  
   this.parseData = function(buffer){
     var parsed = new Buffer(7);
     parsed[0] = device.n(buffer[0]); //x

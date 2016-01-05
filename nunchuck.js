@@ -6,7 +6,7 @@ module.exports = function(RED) {
   var NUNCHUCK_ADDRESS = 0x52;
   var center = 128;
   var threshholdX = 142-center;
-  var threshholdY = 133-center;
+  var threshholdY = 138-center;
   var currentX = center;
   var currentY = center;
   var lastXEvent = "";
@@ -21,6 +21,12 @@ module.exports = function(RED) {
     this.frequency = config.frequency ;
     var node = this;
     var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, (this.frequency|| 1),[threshholdX]);
+
+    //register close handler
+    this.on('close', function() {
+      node.status(disconnected);
+      nunchuck.stop();
+    });
     nunchuck.init();
     nunchuck.start(function(stream){
       if(stream.length>0){
@@ -29,10 +35,16 @@ module.exports = function(RED) {
       var struct = {
         x: stream[0],
         y: stream[1],
+        C: stream[2],
+        Z: stream[3],
+        aX: stream[4],
+        aY: stream[5],
+        aZ: stream[6]
       }
       var msg = { payload: struct };
       node.send(msg);
     });
+
   }
 
   RED.nodes.registerType("nunchuck",nunchuckNode);
