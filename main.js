@@ -12,8 +12,8 @@ var lastXEvent = "";
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX,threshholdY]);
 nunchuck.init();
 var axStream = new streamBuffers.ReadableStreamBuffer({
-	frequency: 1,   // in milliseconds.
-	chunkSize: 1  // in bytes.
+	frequency: 10,   // in milliseconds.
+	chunkSize: 5  // in bytes.
 });
 // axStream.on('data', function(data) {
 //   console.log(data);
@@ -38,6 +38,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  axStream.put(stream[4],'binary');
+  axStream.put(stream[4],'hex');
   console.log(stream);
 });
