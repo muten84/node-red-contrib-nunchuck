@@ -18,7 +18,7 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 axStream.on('data', function(data) {
   // streams1.x style data
   //assert.isTrue(data instanceof Buffer);
-  console.log(data);
+  console.log(data.length);
 });
 // readStream.on('readable', function(data) {
 //   var chunk;
