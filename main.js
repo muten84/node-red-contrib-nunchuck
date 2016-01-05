@@ -13,7 +13,7 @@ var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX,threshholdY])
 nunchuck.init();
 var axStream = new streamBuffers.ReadableStreamBuffer({
 	frequency: 10,   // in milliseconds.
-	chunkSize: 5  // in bytes.
+	chunkSize: 1  // in bytes.
 });
 // axStream.on('data', function(data) {
 //   console.log(data);
@@ -25,7 +25,7 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 axStream.on('readable', function(data) {
   var chunk;
   while((chunk = axStream.read()) !== null) {
-    console.log(chunk);
+    console.log(parseInt(chunk,16);
   }
 });
 nunchuck.start(function(stream){
