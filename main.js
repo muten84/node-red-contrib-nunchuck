@@ -18,7 +18,7 @@ var readStream = new streamBuffers.ReadableStreamBuffer({
 readStream.on('readable', function(data) {
   var chunk;
   while((chunk = readStream.read()) !== null) {
-    console.log(chunck);
+    console.log(chunk);
   }
 });
 nunchuck.start(function(stream){
