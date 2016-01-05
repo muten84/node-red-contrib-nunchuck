@@ -3,9 +3,7 @@
   "version": "0.2.0",
   "description": "A Node-RED node to read data from nunchuck device.",
   "dependencies": {
-    "i2c-bus": ">=1.0.0",
-    "stream-buffers": ">=3.0.0",
-    "binary": "0.3.0"
+    "nunchuck-js": ">=0.0.1"    
   },
   "main": "main.js",
   "license": "MIT",

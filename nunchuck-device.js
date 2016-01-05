@@ -63,14 +63,6 @@ NunchuckDevice.prototype.start = function(ondata){
     parsed[4] = ((buffer[5] >>2) & 0x03) | parseInt(buffer[2]);
     parsed[5] = ((buffer[5] >>4) & 0x03) | parseInt(buffer[3]);
     parsed[6] = ((buffer[5] >>6) & 0x03) | parseInt(buffer[4]);
-
-    //parsed[4] += ((device.n(buffer[5])) >> 2) & 0x03;
-    //parsed[5] += ((device.n(buffer[5])) >> 4) & 0x03;
-    //parsed[6] += ((device.n(buffer[5])) >> 6) & 0x03;
-    /* n->aX = (((nunchuk_data_buffer[5]>>2) & 0b11) | ((int)nunchuk_data_buffer[2])<<2);
-	     n->aY = (((nunchuk_data_buffer[5]>>4) & 0b11) | ((int)nunchuk_data_buffer[3])<<2);
-	     n->aZ = (((nunchuk_data_buffer[5]>>6) & 0b11) | ((int)nunchuk_data_buffer[4])<<2);
-      */
     return parsed;
   }
 

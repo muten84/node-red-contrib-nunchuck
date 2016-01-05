@@ -1,4 +1,6 @@
-var NunchuckDevice = require('./nunchuck-device');
+var nunchuckModules = require('nunchuck-js').nunchuck;
+var NunchuckDevice = nunchuckModules.device;
+var NunchuckDecoder = nunchuckModules.decoder;
 
 
 var NUNCHUCK_ADDRESS = 0x52;
@@ -12,8 +14,9 @@ var idx = 0;
 
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 10,[threshholdX,threshholdY]);
 nunchuck.init();
+var decoder = new NunchuckDecoder(nunchuck);
 
-nunchuck.start(function(stream){
+decoder.start(function(stream){
   var axB = new Buffer(1);
   var chunkSize = 4;
   var struct = {
