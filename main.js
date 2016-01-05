@@ -25,7 +25,7 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 axStream.on('readable', function(data) {
   var chunk;
   while((chunk = axStream.read()) !== null) {
-    console.log(parseInt(chunk,16);
+    console.log(parseInt(chunk,16));
   }
 });
 nunchuck.start(function(stream){
