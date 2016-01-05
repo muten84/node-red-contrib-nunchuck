@@ -12,7 +12,7 @@ var lastXEvent = "";
 var nunchuck = new NunchuckDevice(NUNCHUCK_ADDRESS, 1,[threshholdX,threshholdY]);
 nunchuck.init();
 var readStream = new streamBuffers.ReadableStreamBuffer({
-	frequency: 1,   // in milliseconds.
+	frequency: 10,   // in milliseconds.
 	chunkSize: 1  // in bytes.
 });
 readStream.on('readable', function(data) {
