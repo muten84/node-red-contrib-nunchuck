@@ -19,7 +19,8 @@ var axStream = new streamBuffers.ReadableStreamBuffer({
 axStream.on('readable', function(data) {
   var chunk;
   while((chunk = axStream.read()) !== null) {
-    console.log(chunk);
+    console.log("length: "+chunk.length);
+    console.log(chunk.readInt8(0));
   }
 });
 nunchuck.start(function(stream){
