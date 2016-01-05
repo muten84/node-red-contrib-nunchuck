@@ -38,6 +38,6 @@ nunchuck.start(function(stream){
     aY: stream[5],
     aZ: stream[6]
   }
-  axStream.put(stream[4]);
+  axStream.put(stream[4],'binary');
   //console.log(stream);
 });
