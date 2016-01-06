@@ -24,6 +24,9 @@ From the node-red user data directory launch:
  - Z is the Z button of the controller its possible values are "idle,pressed";
  - WORK IN PROGRESS: aX,aY and aZ are the x, y and z axis of the accelerometer, their possible values are development;
 
+Check out my [blog post ](http://www.luigibifulco.it/blog/en/blog/raspberrypi-nunchuck-nodered-a-lot-of-fun) for examples and basic configuration.
+
+
 ###UPDATE:
 This node-red project now depends on [nunchuck.js](https://github.com/muten84/nunchuck.js) node.js module, it provides a decoder object and a nunchuck device object.
 
