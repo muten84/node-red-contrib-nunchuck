@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-nunchuck",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A Node-RED node to read data from nunchuck device.",
   "dependencies": {
     "nunchuck-js": ">=0.0.1"
