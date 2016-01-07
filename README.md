@@ -6,11 +6,11 @@ From the node-red user data directory launch:
  
  After node-red restart it will be available a new node called "nunchuck" in output directory.
  
- ![](./assetes/img/node.png)
+ ![](./assets/img/node.png)
  
  The node has two config properties:
  
- ![](./assetes/img/nunchuck-node-config.png)
+ ![](./assets/img/nunchuck-node-config.png)
  
   - name: the name of the node
   - frequency: this value is the time the node once started request a read from nunchuck device;
