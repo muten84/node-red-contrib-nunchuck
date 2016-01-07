@@ -1,5 +1,7 @@
 # node-red-contrib-nunchuck
 A Node RED node to read data from nunchuck device mounted on I2C bus
+
+##Installation
 From the node-red user data directory launch:
 
        npm install node-red-contrib-nunchuck
@@ -8,7 +10,8 @@ From the node-red user data directory launch:
  
  ![](./assets/img/node.png)
  
- The node has two config properties:
+##Usage
+The node has two config properties:
  
  ![](./assets/img/nunchuck-node-config.png)
  
@@ -33,10 +36,10 @@ From the node-red user data directory launch:
 Check out my [blog post ](http://www.luigibifulco.it/blog/en/blog/raspberrypi-nunchuck-nodered-a-lot-of-fun) for examples and basic configuration.
 
 
-###UPDATE:
+###Updates:
 This node-red project now depends on [nunchuck.js](https://github.com/muten84/nunchuck.js) node.js module, it provides a decoder object and a nunchuck device object.
 
-###WIP:
+###TODO:
 The resulting JSON object will be extended with more other nice info derived by the accelerometer such as:
  - motion verse detection: left, right, up, down 
  - tilt: tilt-left, tilt-right, tilt-up, tilt-down
