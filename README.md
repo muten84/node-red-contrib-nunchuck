@@ -35,7 +35,7 @@ The node has two config properties:
 
 Check out my [blog post ](http://www.luigibifulco.it/blog/en/blog/raspberrypi-nunchuck-nodered-a-lot-of-fun) for examples and basic configuration.
 
-###Flow Exmaple:
+###Flow Example:
 ![](./assets/img/nunchuck-function-node.png)
 
 ```
