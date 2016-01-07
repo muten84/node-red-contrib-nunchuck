@@ -35,6 +35,12 @@ The node has two config properties:
 
 Check out my [blog post ](http://www.luigibifulco.it/blog/en/blog/raspberrypi-nunchuck-nodered-a-lot-of-fun) for examples and basic configuration.
 
+###Flow Exmaple:
+![](./assets/img/nunchuck-function-node.png)
+
+```
+[{"id":"3818fd96.c7e702","type":"function","z":"e8c028bd.173fd8","name":"processXStickData","func":"var xevent = msg.payload.x ;\nif(context.xevent !== xevent){\n context.xevent = xevent; \n node.send(msg);\n}\nreturn;","outputs":1,"noerr":0,"x":353,"y":158,"wires":[["e7a89ba0.185768"]]}]
+```
 
 ###Updates:
 This node-red project now depends on [nunchuck.js](https://github.com/muten84/nunchuck.js) node.js module, it provides a decoder object and a nunchuck device object.
