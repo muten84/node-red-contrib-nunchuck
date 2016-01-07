@@ -13,7 +13,7 @@ From the node-red user data directory launch:
  ![](./assets/img/nunchuck-node-config.png)
  
   - name: the name of the node
-  - frequency: this value is the time the node once started request a read from nunchuck device;
+  - frequency: this value sets the quite period in milliseconds between each read request to the nunchuck controller over the i2c bus. (e.g.: 100 means 10 requests in 1 second). 
   
  The node has one output object in JSON format, for instance:
 ```
