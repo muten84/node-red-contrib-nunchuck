@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "description": "A Node-RED node to read data from nunchuck device.",
   "dependencies": {
-    "nunchuck-js": ">=0.0.1"
+    "nunchuck-js": ">=1.0.0"
   },
   "main": "main.js",
   "license": "MIT",

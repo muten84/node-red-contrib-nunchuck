@@ -36,13 +36,13 @@ module.exports = function(RED) {
       if(stream.length>0){
         node.status(connected);
       }
-      var struct = {
-        x: stream[0],
-        y: stream[1],
-        C: stream[2],
-        Z: stream[3]     
-      }
-      var msg = { payload: struct };
+      // var struct = {
+      //   x: stream[0],
+      //   y: stream[1],
+      //   C: stream[2],
+      //   Z: stream[3]
+      // }
+      var msg = { payload: decoder.asObject(stream) };
       node.send(msg);
     });
 
